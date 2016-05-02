@@ -14,6 +14,11 @@ try to find law-man-repo reposotory
 open git-bash
 create directory git-projects
 type : git clone https://github.com/medalibettaieb/law-man-repo.git
+the master developer create a single file for exemple : test.txt
+then he type : git add test.txt
+then : git commit -m "first commit"
+then he pushes to github : git push origin master
+the others developers type : git pull
  
 
 
