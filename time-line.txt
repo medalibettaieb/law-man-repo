@@ -1,0 +1,19 @@
+install netepad++
+install jdk 1.8
+install jboss developer studio 9
+adding JAVA_HOME envirement variable to the path of jdk.
+adding %JAVA_HOME%\bin; to the PATH variable.
+test : cmd java -version.
+adding M3_HOME variable
+adding to the PATH %M3_HOME%\bin;
+test : cmd mvn archetype:generate
+cerate the project 
+download git for windows from https://git-scm.com/ and install it 
+go to github.com/ and create an account 
+try to find law-man-repo reposotory
+open git-bash
+create directory git-projects
+type : git clone https://github.com/medalibettaieb/law-man-repo.git
+ 
+
+
