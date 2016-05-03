@@ -12,7 +12,7 @@ public class LawDao {
 	public void addLaw(Law law) {
 		String sql = "insert into law values(" + law.getId() + ",'" + law.getName() + "') ";
 		try {
-			statement.executeUpdate(sql);
+			getStatement().executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
