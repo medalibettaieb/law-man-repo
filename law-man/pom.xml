@@ -85,5 +85,6 @@
     <module>law-man-ejb</module>
     <module>law-man-web</module>
     <module>law-man-ear</module>
+    <module>law-man-client</module>
   </modules>
 </project>
