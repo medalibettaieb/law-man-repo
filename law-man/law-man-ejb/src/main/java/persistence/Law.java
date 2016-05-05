@@ -3,9 +3,12 @@ package persistence;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -16,11 +19,12 @@ public class Law implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String text;
 	private TypeLaw typeLaw;
 
-	@OneToMany(mappedBy = "law")
+	@OneToMany(mappedBy = "law", cascade = CascadeType.PERSIST,fetch=FetchType.EAGER)
 	private List<Chapter> chapters;
 	@OneToMany(mappedBy = "lawProposed")
 	private List<Amendment> amendmentsMaster;
@@ -30,9 +34,10 @@ public class Law implements Serializable {
 	public Law() {
 	}
 
-	public Law(String text) {
+	public Law(String text, TypeLaw typeLaw) {
 		super();
 		this.text = text;
+		this.typeLaw = typeLaw;
 	}
 
 	public int getId() {
@@ -81,6 +86,18 @@ public class Law implements Serializable {
 
 	public void setAmendmentsSlave(List<Amendment> amendmentsSlave) {
 		this.amendmentsSlave = amendmentsSlave;
+	}
+
+	public void linkChaptersToThisLaw(List<Chapter> chapters) {
+		this.chapters = chapters;
+		for (Chapter c : chapters) {
+			c.setLaw(this);
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "Law [id=" + id + ", text=" + text + ", typeLaw=" + typeLaw + ", chapters=" + chapters + "]";
 	}
 
 }
