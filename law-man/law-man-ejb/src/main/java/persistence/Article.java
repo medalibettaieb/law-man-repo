@@ -5,65 +5,65 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+/**
+ * Entity implementation class for Entity: Article
+ *
+ */
 @Entity
-public class Law implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Article implements Serializable {
+
 	@Id
 	private int id;
-	private String text;
-	private TypeLaw typeLaw;
+	private String name;
+	private static final long serialVersionUID = 1L;
 
-	@OneToMany(mappedBy = "law")
-	private List<Chapter> chapters;
-	@OneToMany(mappedBy = "lawProposed")
+	@ManyToOne
+	private Chapter chapter;
+	@OneToMany(mappedBy = "article")
+	private List<Section> sections;
+	@OneToMany(mappedBy = "articleProposed")
 	private List<Amendment> amendmentsMaster;
-	@OneToMany(mappedBy = "lawAmended")
+	@OneToMany(mappedBy = "articleAmended")
 	private List<Amendment> amendmentsSlave;
 
-	public Law() {
-	}
-
-	public Law(String text) {
+	public Article() {
 		super();
-		this.text = text;
 	}
 
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getText() {
-		return text;
+	public String getName() {
+		return this.name;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public List<Chapter> getChapters() {
-		return chapters;
+	public Chapter getChapter() {
+		return chapter;
 	}
 
-	public void setChapters(List<Chapter> chapters) {
-		this.chapters = chapters;
+	public void setChapter(Chapter chapter) {
+		this.chapter = chapter;
 	}
 
-	public TypeLaw getTypeLaw() {
-		return typeLaw;
+	public List<Section> getSections() {
+		return sections;
 	}
 
-	public void setTypeLaw(TypeLaw typeLaw) {
-		this.typeLaw = typeLaw;
+	public void setSections(List<Section> sections) {
+		this.sections = sections;
 	}
 
 	public List<Amendment> getAmendmentsMaster() {
