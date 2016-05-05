@@ -24,7 +24,7 @@ public class Law implements Serializable {
 	private String text;
 	private TypeLaw typeLaw;
 
-	@OneToMany(mappedBy = "law", cascade = CascadeType.PERSIST,fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "law", cascade = CascadeType.PERSIST)
 	private List<Chapter> chapters;
 	@OneToMany(mappedBy = "lawProposed")
 	private List<Amendment> amendmentsMaster;

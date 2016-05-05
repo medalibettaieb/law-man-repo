@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import persistence.Alinea;
 import persistence.Article;
@@ -69,6 +70,15 @@ public class LawManagement implements LawManagementRemote, LawManagementLocal {
 	@Override
 	public Law findLawById(int idLaw) {
 		return entityManager.find(Law.class, idLaw);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Chapter> findChaptersByLawId(int idLaw) {
+		String jpql = "SELECT c FROM Chapter c WHERE c.law.id=:i";
+		Query query = entityManager.createQuery(jpql);
+		query.setParameter("i", idLaw);
+		return query.getResultList();
 	}
 
 }

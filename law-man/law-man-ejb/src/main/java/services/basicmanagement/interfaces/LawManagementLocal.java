@@ -23,4 +23,6 @@ public interface LawManagementLocal {
 	void linkAlineasToSection(int idSection, List<Alinea> alineas);
 
 	Law findLawById(int idLaw);
+	
+	List<Chapter> findChaptersByLawId(int idLaw);
 }

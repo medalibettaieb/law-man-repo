@@ -77,4 +77,9 @@ public class Chapter implements Serializable {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "Chapter [id=" + id + ", name=" + name + "]";
+	}
+
 }
