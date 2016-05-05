@@ -1,10 +1,16 @@
 package services.basicmanagement.impl;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import persistence.Alinea;
+import persistence.Article;
+import persistence.Chapter;
 import persistence.Law;
+import persistence.Section;
 import services.basicmanagement.interfaces.LawManagementLocal;
 import services.basicmanagement.interfaces.LawManagementRemote;
 
@@ -26,6 +32,43 @@ public class LawManagement implements LawManagementRemote, LawManagementLocal {
 	public void addLaw(Law law) {
 		entityManager.persist(law);
 
+	}
+
+	@Override
+	public void linkChaptersToLaw(int idLaw, List<Chapter> chapters) {
+		Law lawFound = findLawById(idLaw);
+		for (Chapter c : chapters) {
+			c.setLaw(lawFound);
+			entityManager.merge(c);
+		}
+
+	}
+
+	@Override
+	public void linkArticlesToChapter(int idChapter, List<Article> articles) {
+		Chapter chapterFound = entityManager.find(Chapter.class, idChapter);
+		for (Article a : articles) {
+			a.setChapter(chapterFound);
+			entityManager.merge(a);
+		}
+
+	}
+
+	@Override
+	public void linkSectionsToArticle(int idArticle, List<Section> sections) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void linkAlineasToSection(int idSection, List<Alinea> alineas) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Law findLawById(int idLaw) {
+		return entityManager.find(Law.class, idLaw);
 	}
 
 }
