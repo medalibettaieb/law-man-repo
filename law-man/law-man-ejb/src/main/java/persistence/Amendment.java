@@ -21,6 +21,7 @@ public class Amendment implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Date dateOfAmendment;
+	private TypeAmendment typeAmendment;
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
@@ -83,6 +84,14 @@ public class Amendment implements Serializable {
 
 	public void setArticleAmended(Article articleAmended) {
 		this.articleAmended = articleAmended;
+	}
+
+	public TypeAmendment getTypeAmendment() {
+		return typeAmendment;
+	}
+
+	public void setTypeAmendment(TypeAmendment typeAmendment) {
+		this.typeAmendment = typeAmendment;
 	}
 
 }
