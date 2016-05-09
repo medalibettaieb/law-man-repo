@@ -2,6 +2,18 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="law-man-ejb">
 		<jta-data-source>java:/MySqlDS</jta-data-source>
+		<class>persistence.Agent</class>
+		<class>persistence.Alinea</class>
+		<class>persistence.Amendment</class>
+		<class>persistence.Article</class>
+		<class>persistence.Chapter</class>
+		<class>persistence.Law</class>
+		<class>persistence.Member</class>
+		<class>persistence.PoliticalParty</class>
+		<class>persistence.RegistrationDetail</class>
+		<class>persistence.RegistrationDetailId</class>
+		<class>persistence.Section</class>
+		<class>persistence.User</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
 		</properties>

@@ -1,0 +1,18 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+<H1>add user</H1>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputText value="name" />
+			<h:inputText value="#{userBean.user.name}" />
+			<h:commandButton action="#{userBean.doAddUser()}" value="add" />
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>
