@@ -1,0 +1,18 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+<H1>add law</H1>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputText value="name" />
+			<h:inputText value="#{lawBean.law.text}" />
+			<h:commandButton action="#{lawBean.doAddLaw()}" value="add" />
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>

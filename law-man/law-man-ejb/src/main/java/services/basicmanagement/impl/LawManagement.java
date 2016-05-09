@@ -81,4 +81,9 @@ public class LawManagement implements LawManagementRemote, LawManagementLocal {
 		return query.getResultList();
 	}
 
+	@Override
+	public List<Law> findAllLaws() {
+		return entityManager.createQuery("SELECT l FROM Law l").getResultList();
+	}
+
 }
