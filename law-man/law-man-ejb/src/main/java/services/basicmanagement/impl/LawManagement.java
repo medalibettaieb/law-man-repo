@@ -91,4 +91,17 @@ public class LawManagement implements LawManagementRemote, LawManagementLocal {
 		entityManager.remove(findLawById(idLaw));
 	}
 
+	@Override
+	public List<Chapter> findChaptersByLawIdJpqlSolution(int idLaw) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Article> findArticlesByLawId(int idLaw) {
+		Law low = findLawById(idLaw);
+		return entityManager.createQuery("select a from Article a,Law l join l.chapters lc where a.chapter=lc and l=:p",
+				Article.class).setParameter("p", low).getResultList();
+	}
+
 }

@@ -45,10 +45,12 @@ public class LawManUtil {
 
 		Article article = new Article("Article1");
 		Article article2 = new Article("Article2");
+		Article article3 = new Article("Article3");
 
 		List<Article> articles = new ArrayList<>();
 		articles.add(article);
 		articles.add(article2);
+		articles.add(article3);
 
 		chapter.linkArticlesToThisChapter(articles);
 

@@ -24,6 +24,8 @@ public interface LawManagementRemote {
 
 	Law findLawById(int idLaw);
 
-	List<Chapter> findChaptersByLawId(int idLaw);
+	List<Chapter> findChaptersByLawIdJpqlSolution(int idLaw);
+
+	List<Article> findArticlesByLawId(int idLaw);
 
 }
