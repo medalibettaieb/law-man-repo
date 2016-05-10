@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +23,7 @@ public class Law implements Serializable {
 	private String text;
 	private TypeLaw typeLaw;
 
-	@OneToMany(mappedBy = "law", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "law", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private List<Chapter> chapters;
 	@OneToMany(mappedBy = "lawProposed")
 	private List<Amendment> amendmentsMaster;
