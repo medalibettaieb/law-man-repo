@@ -27,4 +27,6 @@ public interface LawManagementLocal {
 	List<Chapter> findChaptersByLawId(int idLaw);
 
 	List<Law> findAllLaws();
+	
+	void deleteLaw(int idLaw);
 }
