@@ -1,5 +1,6 @@
 package services.utilities;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,9 +11,11 @@ import javax.ejb.Startup;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import persistence.Agent;
 import persistence.Article;
 import persistence.Chapter;
 import persistence.Law;
+import persistence.Member;
 import persistence.TypeLaw;
 
 /**
@@ -55,8 +58,23 @@ public class LawManUtil {
 		chapter.linkArticlesToThisChapter(articles);
 
 		law.linkChaptersToThisLaw(chapters);
+		
+		Agent agent = new Agent();
+		agent.setName("Haykel");
+		agent.setLogin("haykel");
+		agent.setPassword("haykel");
+		agent.setRole("dev");
+		
+		Member member = new Member();
+		member.setName("Kefi");
+		member.setLogin("kefi");
+		member.setPassword("kefi");
+		member.setPlace(10);
+		
 
 		entityManager.persist(law);
+		entityManager.persist(agent);
+		entityManager.persist(member);
 	}
 
 }
