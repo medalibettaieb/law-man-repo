@@ -4,6 +4,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import persistence.Law;
 import persistence.User;
 import services.registrationServices.interfaces.RegistrationServicesLocal;
 import services.registrationServices.interfaces.RegistrationServicesRemote;
@@ -26,6 +27,12 @@ public class RegistrationServices implements RegistrationServicesRemote, Registr
 	@Override
 	public void addUser(User user) {
 		entityManager.persist(user);
+
+	}
+
+	@Override
+	public void addLaw(Law law) {
+		entityManager.persist(law);
 
 	}
 
