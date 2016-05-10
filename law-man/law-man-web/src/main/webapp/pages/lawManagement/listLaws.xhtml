@@ -33,7 +33,7 @@
 		<h:panelGrid columns="2" border="2" rendered="#{lawBean.display}">
 			<h:outputText value="text" />
 			<h:inputText value="#{lawBean.lawSlected.text}" />
-			<h:commandButton action="update" value="update" />
+			<h:commandButton action="#{lawBean.doUpdate()}" value="update" />
 			<h:commandButton action="#{lawBean.doDelete()}" value="delete" />
 		</h:panelGrid>
 	</h:form>

@@ -33,9 +33,11 @@ public class LawBean {
 		display = false;
 	}
 
-	// public void doDelete(){
-	// lawManagementLocal.deleteLaw(lawSlected.getId());
-	// }
+	public void doUpdate() {
+		lawManagementLocal.updateLaw(lawSlected);
+		lawSlected = new Law();
+		display = false;
+	}
 
 	public String doAddLaw() {
 		lawManagementLocal.addLaw(law);

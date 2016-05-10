@@ -1,5 +1,6 @@
 package services.basicmanagement.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -89,6 +90,26 @@ public class LawManagement implements LawManagementRemote, LawManagementLocal {
 	@Override
 	public void deleteLaw(int idLaw) {
 		entityManager.remove(findLawById(idLaw));
+	}
+
+	@Override
+	public void updateLaw(Law law) {
+		entityManager.merge(law);
+
+	}
+
+	@Override
+	public List<Article> findArticlesByLawId(int idLaw) {
+		List<Article> listArticles = new ArrayList<Article>();
+		Law law = findLawById(idLaw);
+		List<Chapter> listChapters = law.getChapters();
+		for (Chapter c : listChapters) {
+			List<Article> articles = c.getArticles();
+			for (Article a : articles) {
+				listArticles.add(a);
+			}
+		}
+		return listArticles;
 	}
 
 }
