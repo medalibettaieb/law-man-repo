@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+	<h1>List of Laws</h1>
+	<h:form>
+		<h:dataTable value="#{lawBean.laws}" var="l" border="2">
+			<h:column>
+				<f:facet name="header">
+				id
+			</f:facet>
+				<h:outputText value="#{l.id}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+				texte
+			</f:facet>
+				<h:outputText value="#{l.text}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+				#
+			</f:facet>
+				<h:commandButton action="#{lawBean.doSelect(l)}" value="Select" />
+			</h:column>
+		</h:dataTable>
+		<h:panelGrid columns="2" border="2" rendered="#{lawBean.display}">
+			<h:outputText value="text" />
+			<h:inputText value="#{lawBean.lawSlected.text}" />
+			<h:commandButton action="update" value="update" />
+			<h:commandButton action="#{lawBean.doDelete()}" value="delete" />
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>

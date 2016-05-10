@@ -86,4 +86,9 @@ public class LawManagement implements LawManagementRemote, LawManagementLocal {
 		return entityManager.createQuery("SELECT l FROM Law l").getResultList();
 	}
 
+	@Override
+	public void deleteLaw(int idLaw) {
+		entityManager.remove(findLawById(idLaw));
+	}
+
 }
