@@ -24,13 +24,15 @@ public interface LawManagementLocal {
 
 	Law findLawById(int idLaw);
 
+	List<Article> findArticlesByLawIdObjectWay(int idLaw);
+
+	List<Article> findArticlesByLawIdEjbqlWay(int idLaw);
+
 	List<Chapter> findChaptersByLawId(int idLaw);
 
 	List<Law> findAllLaws();
 
 	void deleteLaw(int idLaw);
 
-	List<Chapter> findChaptersByLawIdJpqlSolution(int idLaw);
-
-	List<Article> findArticlesByLawId(int idLaw);
+	void updateLaw(Law lawSlected);
 }

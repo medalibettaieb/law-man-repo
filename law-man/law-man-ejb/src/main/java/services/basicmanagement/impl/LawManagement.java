@@ -1,5 +1,6 @@
 package services.basicmanagement.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -91,17 +92,36 @@ public class LawManagement implements LawManagementRemote, LawManagementLocal {
 		entityManager.remove(findLawById(idLaw));
 	}
 
-	@Override
 	public List<Chapter> findChaptersByLawIdJpqlSolution(int idLaw) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Article> findArticlesByLawId(int idLaw) {
+	public List<Article> findArticlesByLawIdEjbqlWay(int idLaw) {
 		Law low = findLawById(idLaw);
 		return entityManager.createQuery("select a from Article a,Law l join l.chapters lc where a.chapter=lc and l=:p",
 				Article.class).setParameter("p", low).getResultList();
+	}
+
+	@Override
+	public List<Article> findArticlesByLawIdObjectWay(int idLaw) {
+		List<Article> listArticles = new ArrayList<Article>();
+		Law law = findLawById(idLaw);
+		List<Chapter> listChapters = law.getChapters();
+		for (Chapter c : listChapters) {
+			List<Article> articles = c.getArticles();
+			for (Article a : articles) {
+				listArticles.add(a);
+			}
+		}
+		return listArticles;
+	}
+
+	@Override
+	public void updateLaw(Law lawSlected) {
+		entityManager.merge(lawSlected);
+
 	}
 
 }

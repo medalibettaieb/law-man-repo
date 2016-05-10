@@ -9,14 +9,14 @@ import javax.naming.NamingException;
 import persistence.Article;
 import services.basicmanagement.interfaces.LawManagementRemote;
 
-public class TestFindArticlesByLawId {
+public class TestFindArticlesByLawIdEjbQlWay {
 
 	public static void main(String[] args) throws NamingException {
 		Context context = new InitialContext();
 		LawManagementRemote proxy = (LawManagementRemote) context.lookup(
 				"law-man-ear/law-man-ejb/LawManagement!services.basicmanagement.interfaces.LawManagementRemote");
 
-		List<Article> articles = proxy.findArticlesByLawId(1);
+		List<Article> articles = proxy.findArticlesByLawIdEjbqlWay(1);
 		for (Article a : articles) {
 			System.out.println(a.getName());
 		}
