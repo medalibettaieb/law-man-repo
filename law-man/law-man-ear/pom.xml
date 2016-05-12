@@ -42,7 +42,7 @@
 				<configuration>
 					<filename>${project.artifactId}.ear</filename>
 					<port>19990</port>
-					<hostname>172.16.62.252</hostname>
+					<hostname>172.16.62.148</hostname>
 					<username>admin</username>
 					<password>wildflyadmin</password>
 				</configuration>
