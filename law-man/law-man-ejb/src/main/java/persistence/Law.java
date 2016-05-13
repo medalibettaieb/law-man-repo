@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Law implements Serializable {
 
@@ -24,10 +26,13 @@ public class Law implements Serializable {
 	private TypeLaw typeLaw;
 
 	@OneToMany(mappedBy = "law", cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@JsonIgnore
 	private List<Chapter> chapters;
 	@OneToMany(mappedBy = "lawProposed")
+	@JsonIgnore
 	private List<Amendment> amendmentsMaster;
 	@OneToMany(mappedBy = "lawAmended")
+	@JsonIgnore
 	private List<Amendment> amendmentsSlave;
 
 	public Law() {
